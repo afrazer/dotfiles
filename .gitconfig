@@ -1,10 +1,13 @@
 # This is Git's per-user configuration file.
 [user]
     name = Alexander Frazer
-    email = alexfrazer11@gmail.com
+    email = afrazer@protonmail.com
 
 [alias]
     lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
     graph = "log --color --graph --oneline"
+
     sync = !git fetch --all --verbose --prune --tags
+
     upstream = !git reset --hard @{u}
