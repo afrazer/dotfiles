@@ -141,13 +141,13 @@ set updatetime=250
 
 " YouCompleteMe
 " Disable YouCompleteMe on startup - comment out to enable
-let g:loaded_youcompleteme = 1
-" nnoremap <F5> :YcmForceCompileAndDiagnostic<cr>
-" nnoremap <F6> :YcmShowDetailedDiagnostic<cr>
-" nnoremap <leader>fx :YcmCompleter FixIt<cr>
-" let g:ycm_warning_symbol = 'w'
-" let g:ycm_error_symbol = 'x'
-" let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:loaded_youcompleteme = 0
+nnoremap <F5> :YcmForceCompileAndDiagnostic<cr>
+nnoremap <F6> :YcmShowDetailedDiagnostic<cr>
+nnoremap <leader>fx :YcmCompleter FixIt<cr>
+let g:ycm_warning_symbol = 'w'
+let g:ycm_error_symbol = 'x'
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 " ExpandRegion
 " FIXME(afrazer): How should I fix this
@@ -281,6 +281,9 @@ autocmd BufRead,BufNewFile *.cfg set filetype=python
 " C++ Syntax
 autocmd FileType hpp,cpp setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab syntax=cpp
 autocmd FileType c,cpp setlocal commentstring=//\ %s
+
+" D Syntax
+autocmd FileType d setlocal commentstring=//\ %s
 
 " CMake Syntax
 autocmd FileType cmake setlocal commentstring=#\ %s
