@@ -37,6 +37,15 @@ if [ -z "$HISTTIMEFORMAT" ]; then
     export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S %z "
 fi
 
+set -o vi
+
+set show-mode-in-prompt on
+
+shopt -s histverify
+
+# cd to directory just by typing it
+shopt -s autocd
+
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
@@ -64,6 +73,21 @@ function up() {
     do
         cd ..
     done
+}
+
+function duh {
+    local dir=$1
+
+    du -shc $dir
+}
+
+function huh() {
+    local huh=$1
+    if [[ -z ${huh} ]]; then
+        huh=10
+    fi
+
+    history | tail -n ${huh}
 }
 
 function psa() {
