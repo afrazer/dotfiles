@@ -1,12 +1,16 @@
 
-alias ll="ls -AlFh --group-directories-first"
+alias ll="exa -alF --group-directories-first"
+alias ls="exa"
 
 # Git bash aliases
 alias gs="git status"
 alias gss="git status --short --branch"
 alias gd="git diff"
+alias gdw="git diff --word-diff"
 alias gds="git diff --staged"
+alias gdsw="git diff --staged --word-diff"
 alias gls="git lg --stat -n 10"
+alias gl="git lg"
 
 # Navigation
 alias ..="cd .."
