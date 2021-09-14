@@ -1,13 +1,31 @@
-# This is Git's per-user configuration file.
 [user]
     name = Alexander Frazer
     email = afrazer@protonmail.com
 
+[credential]
+helper = cache
+
 [alias]
     lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
+    l = "!source ~/.githelper && pretty_git_log"
+
     graph = "log --color --graph --oneline"
 
-    sync = !git fetch --all --verbose --prune --tags
+    update = !git fetch --all --verbose --prune --tags
 
     upstream = !git reset --hard @{u}
+
+    head = !git lg -n 20
+
+    enforce = push --force-with-lease
+
+; [fetch]
+;     # Automatically remove local branches that are deleted from the remote
+; prune = true
+
+[pull]
+    rebase = true
+
+[rebase]
+    autoStash = true
