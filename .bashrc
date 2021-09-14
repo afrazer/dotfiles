@@ -20,18 +20,29 @@ if [ -f ~/.git-prompt.sh ]; then
     source ~/.git-prompt.sh
 fi
 
+
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUPSTREAM="git"
+export GIT_PS1_DESCRIBE_STYLE="describe"
+
 # Change the prompt to something that I like
 # Replace 0 with 1 for dark color
 # Black 0;30 - Blue 0;34 - Green 0;32 - Cyan 0;36 - Red 0;31
 # Purple 0;35 - Brown 0;33
 #PS1='\[\e[36m\]\u@\h \W $ \[\e[0m\]'
+black=$(tput setaf 0)
+red=$(tput setaf 1)
 green=$(tput setaf 2)
+yellow=$(tput setaf 3)
+blue=$(tput setaf 4)
+cyan=$(tput setaf 6)
+white=$(tput setaf 7)
 reset=$(tput sgr0)
 # PS1='\[$green\]\u@\h \W $ \[$reset\]'
-PS1='[\[$green\]\u@\h \w$(__git_ps1 " (%s)")\[$reset\]] \n\$ '
+PS1='[\[$green\]\u@\h \w\[$yellow\]$(__git_ps1 " (%s)") \[$red\]\j \[$cyan\]\D{%a %d-%b-%Y %T %z}\[$reset\]] \n\$ '
 export PS1
 
-export EDITOR=vim
+export EDITOR=nvim
 
 if [ -z "$HISTTIMEFORMAT" ]; then
     export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S %z "
@@ -101,3 +112,14 @@ function work-on() {
     fi
 }
 
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+
+export FZF_DEFAULT_COMMAND="fd --type f"
+
+export N_PREFIX="$HOME/.local"
+
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
