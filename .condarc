@@ -1,0 +1,8 @@
+channels:
+  # - msarahan
+  - local
+  - default
+  - pkgs/main
+  # - pkgs/free
+  - conda-forge
+env_prompt: ({name})
