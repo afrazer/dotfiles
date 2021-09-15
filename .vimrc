@@ -45,6 +45,7 @@ set nocompatible
 filetype off
 call plug#begin('~/.vim/plugged')
 
+Plug 'JesseKPhillips/d.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dracula/vim'
@@ -74,8 +75,15 @@ Plug 'terryma/vim-expand-region'
 Plug 'majutsushi/tagbar'
 Plug 'raimondi/delimitmate'
 Plug 'bfrg/vim-cpp-modern'
+Plug 'rust-lang/rust.vim'
 
 " Plug 'ludovicchabant/vim-gutentags'
+"
+" Try this:
+" Plug 'w0rp/ale'
+" Plug 'airblade/vim-rooter'
+" Plug 'junegunn/fzf'
+" Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -144,10 +152,15 @@ set updatetime=250
 " let g:loaded_youcompleteme = 0
 nnoremap <F5> :YcmForceCompileAndDiagnostic<cr>
 nnoremap <F6> :YcmShowDetailedDiagnostic<cr>
+nnoremap <F7> :YcmCompleter GetType<cr>
 nnoremap <leader>fx :YcmCompleter FixIt<cr>
 let g:ycm_warning_symbol = 'w'
 let g:ycm_error_symbol = 'x'
 let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_clangd_binary_path = "/usr/bin/clangd"
+
+let g:ycm_confirm_extra_conf = 0
+
 
 " ExpandRegion
 " FIXME(afrazer): How should I fix this
@@ -257,8 +270,9 @@ set ttyfast
 " Enable syntax highlighting
 syntax enable
 
+let g:dracula_italic = 0
 " colorscheme delek
-set background=dark
+" set background=dark
 color dracula
 
 " Set extra options when running in GUI mode
@@ -283,6 +297,7 @@ autocmd FileType hpp,cpp setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 autocmd FileType c,cpp setlocal commentstring=//\ %s
 
 " D Syntax
+" autocmd FileType d setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab syntax=cpp
 autocmd FileType d setlocal commentstring=//\ %s
 
 " CMake Syntax
@@ -485,8 +500,10 @@ autocmd BufWrite *.cfg :call DeleteTrailingWS()
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 autocmd BufWrite *.cpp :call DeleteTrailingWS()
+autocmd BufWrite *.d :call DeleteTrailingWS()
 autocmd BufWrite *.hpp :call DeleteTrailingWS()
 autocmd BufWrite *.ml :call DeleteTrailingWS()
+autocmd BufWrite *.rs :call DeleteTrailingWS()
 
 " Get rid of whitespace explicitly
 nnoremap <leader>W :call DeleteTrailingWS()<cr>
@@ -554,8 +571,8 @@ map <leader>s? z=
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
-" Quickly open a buffer for scripbble
-map <leader>q :e ~/buffer<cr>
+" Quickly open a buffer for scribble
+map <leader>q :e ~/.buffer.deleteme<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
@@ -638,6 +655,14 @@ function! s:DiffWithSaved()
 endfunction
 command! DiffSaved call <SID>DiffWithSaved()
 
+
 " XXX(afrazer): Should I use a snippts plugin for this??
-let @n='OdummyjkgccwCXXX(afrazer): '
+let @x='OdummyjkgccwCXXX(afrazer, jk@ta): '
+let @t='"=strftime("%Y-%m-%d")p'
+
+" NOTE(afrazer): dscanner doesn't generate relative tags by default
+" There is probably a workaround for this but too lazy right now...
+set notagrelative
+
+set tags=./.git/tags
 
