@@ -106,6 +106,7 @@ autocmd FileType c,cpp,rust vnoremap <buffer><leader>F :ClangFormat<cr>
 nmap <leader>C :ClangFormatAutoToggle<cr>
 
 autocmd FileType h,hpp,c,cpp setlocal commentstring=//\ %s
+autocmd FileType sql setlocal commentstring=--\ %s
 
 nnoremap \c :set cursorline!<cr>
 
