@@ -12,6 +12,9 @@ alias gdsw="git diff --staged --word-diff"
 alias gls="git lg --stat -n 10"
 alias gl="git lg"
 
+alias gdm="git difftool -y --tool meld"
+alias gdn="git difftool -y --tool nvimdiff"
+
 # Navigation
 alias ..="cd .."
 alias ...="cd ../.."
