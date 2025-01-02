@@ -1,16 +1,25 @@
 
-alias ll="exa -alF --group-directories-first"
-alias ls="exa"
+alias ll="eza -alF --group-directories-first"
+alias ls="eza"
 
 # Git bash aliases
+alias ga="git add"
+alias gc="git commit --verbose"
+alias gcm="git commit --message"
+
 alias gs="git status"
 alias gss="git status --short --branch"
+
 alias gd="git diff"
 alias gdw="git diff --word-diff"
 alias gds="git diff --staged"
 alias gdsw="git diff --staged --word-diff"
-alias gls="git lg --stat -n 10"
+
 alias gl="git lg"
+alias gls="git lg --stat"
+alias gg="git graph --all"
+
+alias grcd="cd $(git root)"
 
 alias gdm="git difftool -y --tool meld"
 alias gdn="git difftool -y --tool nvimdiff"
