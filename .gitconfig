@@ -2,9 +2,6 @@
     name = Alexander Frazer
     email = afrazer@protonmail.com
 
-[credential]
-helper = cache
-
 [alias]
     c = commit -m
 
@@ -38,27 +35,49 @@ helper = cache
 
     mru = for-each-ref --sort=-committerdate --count=10 refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
 
-; [fetch]
-;     # Automatically remove local branches that are deleted from the remote
-; prune = true
+[branch]
+    sort = -committerdate
 
-; [column]
-; 	ui = always
+[column]
+    ui = auto
 
 [commit]
     verbose = true
+
+[core]
+    pager = delta
+
+[credential]
+    helper = cache
+
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+
+[help]
+    autocorrect = prompt
+
+[init]
+    defaultBranch = main
+
+[tag]
+    sort = version:refname
+
+[merge]
+    conflictStyle = zdiff3
 
 [pull]
     rebase = true
 
 [rebase]
+    autoSquash = true
     autoStash = true
+    updateRefs = true
 
-[init]
-    defaultBranch = main
-
-[core]
-    pager = delta
+[rerere]
+    enabled = true
+    autoupdate = true
 
 [interactive]
     diffFilter = delta --color-only
@@ -68,15 +87,19 @@ helper = cache
     dark = true
     features = dracula
 
-[merge]
-    conflictStyle = diff3
-
 [diff]
+    algorithm = histogram
     colorMoved = default
     colorMovedWs = allow-indentation-change
-    algorithm = histogram
     indentHeuristic = true
+    mnemonicPrefix = true
+    renames = true
+
+[push]
+    default = simple
+    autoSetupRemote = true
+    followTags = true
 
 [status]
-	showStash = true
+    showStash = true
 
