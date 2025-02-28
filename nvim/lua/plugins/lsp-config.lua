@@ -37,9 +37,17 @@ return {
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 			})
+			lspconfig.pyright.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.ruff.setup({
+				capabilities = capabilities,
+			})
 
             vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
             vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
+            vim.keymap.set("n", "q]", vim.diagnostic.goto_next)
+            vim.keymap.set("n", "q[", vim.diagnostic.goto_prev)
 
 			vim.keymap.set("n", "L", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
