@@ -1,24 +1,15 @@
 return {
-	{
-		"williamboman/mason.nvim",
-		config = function()
-			require("mason").setup()
-		end,
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			require("mason-lspconfig").setup({
-				ensure_installed = {
-					"clangd",
-					-- "cmake",
-					"lua_ls",
-					"ts_ls",
-                    "ols",
-				},
-			})
-		end,
-	},
+    {
+        "mason-org/mason.nvim",
+        opts = {}
+    },
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {
+            ensure_installed = { "clangd", "lua_ls", "ts_ls", "ols", },
+            automatic_enable = true, -- TODO(afrazer, 2025-05-25): Enable after nvim updates to 0.11 !
+        }
+    },
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
