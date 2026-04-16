@@ -1,7 +1,6 @@
 
 vim.g.mapleader = ","
 
-
 vim.wo.number = true
 vim.wo.relativenumber = true
 
@@ -19,19 +18,24 @@ vim.keymap.set("n", "<c-j>", "<cmd>bnext<cr>")
 vim.keymap.set("n", "<c-k>", "<cmd>bprev<cr>")
 
 vim.keymap.set({ "n", "v" }, "<tab>", "%")
+vim.keymap.set("n", "K", "i<CR><Esc>", { desc = "Split line at cursor" })
 
-vim.cmd("set gdefault")
-vim.cmd("set magic")
-vim.cmd("set lazyredraw")
-vim.cmd("set showmatch")
-vim.cmd("set nowrap")
+vim.opt.gdefault = true
+vim.opt.magic = true
+vim.opt.lazyredraw=true
+vim.opt.showmatch = true
+vim.opt.wrap = false
+vim.opt.termguicolors = true
 
-vim.cmd("set expandtab")
-vim.cmd("set smarttab")
+vim.opt.expandtab = true
+vim.opt.smarttab = true
 
-vim.cmd("set tabstop=4")
-vim.cmd("set softtabstop=4")
-vim.cmd("set shiftwidth=4")
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 
-vim.cmd("set scrolloff=5")
+vim.opt.scrolloff = 5
+vim.opt.swapfile = false
 
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
