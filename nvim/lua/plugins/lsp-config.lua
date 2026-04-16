@@ -15,25 +15,30 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			local lspconfig = require("lspconfig")
-			lspconfig.clangd.setup({
-				capabilities = capabilities,
-			})
-			-- lspconfig.cmake.setup({
+            -- local lspconfig = vim.lsp.config("*", {})
+
+            vim.lsp.config("*", {
+                capabilities = capabilities,
+            })
+
+			-- lspconfig.clangd.setup({
 			-- 	capabilities = capabilities,
 			-- })
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.ts_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.pyright.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.ruff.setup({
-				capabilities = capabilities,
-			})
+			-- -- lspconfig.cmake.setup({
+			-- -- 	capabilities = capabilities,
+			-- -- })
+			-- lspconfig.lua_ls.setup({
+			-- 	capabilities = capabilities,
+			-- })
+			-- lspconfig.ts_ls.setup({
+			-- 	capabilities = capabilities,
+			-- })
+			-- lspconfig.pyright.setup({
+			-- 	capabilities = capabilities,
+			-- })
+			-- lspconfig.ruff.setup({
+			-- 	capabilities = capabilities,
+			-- })
 
             vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
             vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
