@@ -1,3 +1,8 @@
+vim.filetype.add({
+    extension = {
+        jai = "jai",
+    },
+})
 
 vim.g.mapleader = ","
 
@@ -22,7 +27,7 @@ vim.keymap.set("n", "K", "i<CR><Esc>", { desc = "Split line at cursor" })
 
 vim.opt.gdefault = true
 vim.opt.magic = true
-vim.opt.lazyredraw=true
+vim.opt.lazyredraw = true
 vim.opt.showmatch = true
 vim.opt.wrap = false
 vim.opt.termguicolors = true
