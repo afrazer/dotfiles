@@ -6,7 +6,7 @@ return {
     {
         "mason-org/mason-lspconfig.nvim",
         opts = {
-            ensure_installed = { "clangd", "lua_ls", "ts_ls", "ols" },
+            ensure_installed = { "clangd", "lua_ls", "ts_ls", "ols", "tombi", },
         },
     },
     {
@@ -53,6 +53,7 @@ return {
             vim.lsp.enable("ts_ls")
             vim.lsp.enable("ols")
             vim.lsp.enable("clangd")
+            vim.lsp.enable("tombi")
 
             vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
             vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)

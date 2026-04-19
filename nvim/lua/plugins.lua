@@ -26,6 +26,8 @@ return {
             formatters_by_ft = {
                 lua = { "stylua" },
                 python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+                toml = { "tombi" },
+
             },
         },
     },
@@ -49,4 +51,5 @@ return {
             -- })
         end,
     },
+    { "rluba/jai.vim", ft = "jai", lazy = false },
 }
