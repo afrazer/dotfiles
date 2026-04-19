@@ -1,6 +1,7 @@
 
-alias ll="eza -alF --group-directories-first"
 alias ls="eza"
+alias ll="ls -alF"
+alias llg="ll --group-directories-first"
 
 # Git bash aliases
 alias ga="git add"
