@@ -37,6 +37,7 @@
 
 [branch]
     sort = -committerdate
+    autosetuprebase = always
 
 [column]
     ui = auto
@@ -85,15 +86,20 @@
 [delta]
     navigate = true
     dark = true
-    features = dracula
+    features = dracula line-numbers decorations
+    line-numbers = true
 
 [diff]
     algorithm = histogram
-    colorMoved = default
+    colorMoved = zebra
     colorMovedWs = allow-indentation-change
     indentHeuristic = true
     mnemonicPrefix = true
     renames = true
+    tool = nvimdiff
+
+[difftool]
+    prompt = false
 
 [push]
     default = simple
@@ -103,3 +109,35 @@
 [status]
     showStash = true
 
+[color "branch"]
+    current = yellow bold
+    local = green bold
+    remote = cyan bold
+
+[color "status"]
+    added = green bold
+    changed = yellow bold
+    untracked = red bold
+
+[delta "decorations"]
+    minus-style = red bold normal
+    plus-syle = gren bold normal
+    minus-emph-style = white bold darkred
+    minus-non-emph-style = red bold normal
+    plus-emph-style = white bold darkgreen
+    plus-non-emph-style = green bold normal
+    file-style = yellow bold none
+    file-decoration-style = yellow box
+    hunk-header-style = magenta bold
+    hunk-header-decoration-style = magenta box
+    minus-empty-line-marker-style = normal normal
+    plus-empty-line-marker-style = normal normal
+    line-numbers-right-format = "{np:^4}| "
+
+[delta "csv-clean"]
+    word-diff-regex = "[%,]+"
+    minus-style = syntax
+    minus-word-style = bold red
+    plus-style = syntax
+    plus-word-style = bold green
+    side-by-side = false
