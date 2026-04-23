@@ -44,3 +44,20 @@ vim.opt.swapfile = false
 
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
+
+local function toggle_quickfix()
+    local qf_exists = false
+    for _, win in pairs(vim.fn.getwininfo()) do
+        if win["quickfix"] == 1 then
+            qf_exists = true
+        end
+    end
+
+    if qf_exists then
+        vim.cmd("cclose")
+    else
+        vim.cmd("open")
+    end
+end
+
+vim.keymap.set("n", "<leader>q", toggle_quickfix, { desc = "Toggle Quickfix list" })
