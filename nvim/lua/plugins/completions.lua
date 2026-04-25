@@ -28,6 +28,7 @@ return {
                     auto_show_delay_ms = 50,
                 },
             },
+            signature = { enabled = true },
             appearance = { nerd_font_variant = "mono" },
             sources = {
                 default = { "lsp", "path", "snippets", "buffer" },

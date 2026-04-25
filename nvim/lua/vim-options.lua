@@ -1,9 +1,3 @@
-vim.filetype.add({
-    extension = {
-        jai = "jai",
-    },
-})
-
 vim.g.mapleader = ","
 
 vim.wo.number = true

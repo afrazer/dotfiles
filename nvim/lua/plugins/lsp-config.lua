@@ -6,30 +6,22 @@ return {
     {
         "mason-org/mason-lspconfig.nvim",
         opts = {
-            ensure_installed = { "clangd", "lua_ls", "ts_ls", "ols", "tombi", },
+            ensure_installed = { "clangd", "lua_ls", "ts_ls", "ols", "tombi" },
         },
     },
     {
         "neovim/nvim-lspconfig",
         config = function()
-            local lspconfig = require("lspconfig")
-            local configs = require("lspconfig.configs")
-
-            if not configs.jails then
-                configs.jails = {
-                    default_config = {
-                        cmd = { "jails" },
-                        filetypes = { "jai" },
-                        root_dir = lspconfig.util.root_pattern("jails.json", ".git", "main.jai"),
-                        settings = {},
-                    },
-                }
-            end
-
             local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-            lspconfig.jails.setup({
+            vim.lsp.config("jails", {
                 capabilities = capabilities,
+                mason = false,
+                cmd = { "jails" },
+                filetypes = { "jai" },
+                root_markers = { ".git" },
+                single_file_support = true,
+                settings = {},
             })
 
             vim.lsp.config("lua_ls", {
@@ -54,6 +46,7 @@ return {
             vim.lsp.enable("ols")
             vim.lsp.enable("clangd")
             vim.lsp.enable("tombi")
+            vim.lsp.enable("jails")
 
             vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
             vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
