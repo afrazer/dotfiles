@@ -10,21 +10,30 @@ return {
             },
             completion = {
                 trigger = {
+                    show_on_trigger_character = true,
                     prefetch_on_insert = true,
+                    show_on_keyword = true,
                 },
-                menu = { auto_show = true },
-                documentation = { auto_show = true, auto_show_delay_ms = 50 },
+                list = {
+                    selection = {
+                        preselect = true,
+                        auto_insert = true,
+                    },
+                },
+                menu = {
+                    auto_show = true,
+                },
+                documentation = {
+                    auto_show = true,
+                    auto_show_delay_ms = 50,
+                },
             },
             appearance = { nerd_font_variant = "mono" },
             sources = {
                 default = { "lsp", "path", "snippets", "buffer" },
                 providers = {
                     lsp = {
-                        min_keyword_length = 1,
                         score_offset = 100,
-                    },
-                    buffer = {
-                        min_keyword_length = 3,
                     },
                 },
             },
