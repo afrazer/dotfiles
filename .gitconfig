@@ -88,6 +88,7 @@
     dark = true
     features = dracula line-numbers decorations
     line-numbers = true
+    syntax-theme = "Dracula"
 
 [diff]
     algorithm = histogram
