@@ -29,7 +29,7 @@
 
     oof = stash save --keep-index
 
-    cena = commit --no-edit --amend
+    cane = commit --amend --no-edit
 
     root = rev-parse --show-toplevel
 
