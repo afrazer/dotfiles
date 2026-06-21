@@ -5,14 +5,6 @@ return {
       "williamboman/mason.nvim",
       "jay-babu/mason-nvim-dap.nvim",
 
-      {
-        "igorlfs/nvim-dap-view",
-        lazy = false,
-        version = "1.*",
-        ---@module 'dap-view'
-        ---@type dapview.Config
-        opts = {},
-      },
     },
     config = function()
       require("mason").setup()
@@ -80,28 +72,6 @@ return {
       dap.configurations.rust = dap.configurations.jai
 
       ------------------------------------------------------------------------
-      -- nvim-dap-view integration
-      ------------------------------------------------------------------------
-
-      local dapview = require("dap-view")
-
-      dap.listeners.before.attach.dap_view_config = function()
-        dapview.open()
-      end
-
-      dap.listeners.before.launch.dap_view_config = function()
-        dapview.open()
-      end
-
-      dap.listeners.before.event_terminated.dap_view_config = function()
-        dapview.close()
-      end
-
-      dap.listeners.before.event_exited.dap_view_config = function()
-        dapview.close()
-      end
-
-      ------------------------------------------------------------------------
       -- Keymaps
       ------------------------------------------------------------------------
 
@@ -140,9 +110,41 @@ return {
       vim.keymap.set("n", "<leader>dt", function()
         dap.terminate()
       end, { desc = "DAP terminate" })
+    end,
+  },
+  {
+    "igorlfs/nvim-dap-view",
+    lazy = false,
+    version = "1.*",
+    ---@module "dap-view"
+    opts = {},
+    config = function()
 
+      local dap = require("dap")
+
+      local dapview = require("dap-view")
+
+      dap.listeners.before.attach.dap_view_config = function()
+        dapview.open()
+      end
+
+      dap.listeners.before.launch.dap_view_config = function()
+        dapview.open()
+      end
+
+      dap.listeners.before.event_terminated.dap_view_config = function()
+        dapview.close()
+      end
+
+      dap.listeners.before.event_exited.dap_view_config = function()
+        dapview.close()
+      end
+
+      ------------------------------------------------------------------------
+      -- Keymaps
+      ------------------------------------------------------------------------
       vim.keymap.set("n", "<leader>dv", function()
-        require("dap-view").toggle()
+          dapview.toggle()
       end, { desc = "DAP view toggle" })
     end,
   },
